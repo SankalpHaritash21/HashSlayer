@@ -58,3 +58,89 @@ MD5 (Message Digest Algorithm 5) is a cryptographic hash function that converts 
 
 1. **Padding:** Append a single 1-bit followed by zeros until the message length is 448 mod 512. Add the length of the original message as a 64-bit integer.
 2. **Initialize MD Buffer:** Four 32-bit words initialized as:
+
+3. **Process Each Block:**
+
+- Divide the message into 512-bit blocks.
+- Each block is processed in 64 rounds using bitwise operations.
+- Transformation functions (F, G, H, I) are applied to the blocks.
+
+4. **Output:** The final 128-bit digest is the concatenation of the modified A, B, C, and D values.
+
+---
+
+## 🧑‍💻 **MD5 Hashing in Different Languages**
+
+---
+
+### 🐍 **Python**
+
+```python
+import hashlib
+
+# Input string
+data = "Hello, World!"
+
+# Create MD5 hash object
+hash_object = hashlib.md5(data.encode())
+
+# Get hexadecimal representation
+md5_hash = hash_object.hexdigest()
+
+print(f"MD5 Hash: {md5_hash}")
+```
+
+### **Java**
+
+```java
+import java.security.MessageDigest;
+
+public class MD5Hashing {
+    public static void main(String[] args) throws Exception {
+        String data = "Hello, World!";
+
+        // Create MD5 hash object
+        MessageDigest md = MessageDigest.getInstance("MD5");
+
+        // Process data
+        byte[] hashBytes = md.digest(data.getBytes());
+
+        // Convert bytes to hex format
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashBytes) {
+            sb.append(String.format("%02x", b));
+        }
+
+        System.out.println("MD5 Hash: " + sb.toString());
+    }
+}
+
+```
+
+### **🌐 JavaScript (Node.js)**
+
+```javascript
+const crypto = require("crypto");
+
+// Input string
+const data = "Hello, World!";
+
+// Create MD5 hash
+const md5Hash = crypto.createHash("md5").update(data).digest("hex");
+
+console.log(`MD5 Hash: ${md5Hash}`);
+```
+
+### **🚀 Usage in Real-world Applications**
+
+1. Data Integrity Check: Comparing MD5 hash values to detect modifications.
+2. Digital Forensics: Verifying the authenticity of evidence files.
+3. File Upload Validation: Ensuring uploaded files have not been altered.
+
+- 🔐 Preventive Measures and Alternatives
+- ✅ Switch to Secure Hashing Algorithms:
+
+### SHA-256: More secure and resistant to collisions.
+
+1. bcrypt, scrypt, and Argon2: Best suited for password hashing.
+2. HMAC (Hash-based Message Authentication Code): Secure hash for message integrity.
