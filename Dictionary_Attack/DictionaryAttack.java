@@ -61,6 +61,6 @@ public static String hashPassword(String password) throws NoSuchAlgorithmExcepti
     public static void main(String[] args) throws Exception {
         System.out.println("MD5 Hash to Crack: 5f4dcc3b5aa765d61d8327deb882cf99 \n");
         System.out.println("Dictionary File: dictionary.txt\n");
-        dictionaryAttack("5f4dcc3b5aa765d61d8327deb882cf99", "dictionary.txt");
+        dictionaryAttack("5f4dcc3b5aa765d61d8327deb882cf99", "./Dictionary_Attack/dictionary.txt");
     }
 }
