@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diffie-Hellman Key Exchange with User Input</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 20px;
+      }
+      .container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 Diffie-Hellman Key Exchange</h1>
+
+      <!-- Input Form -->
+      <label for="prime">Prime (p):</label>
+      <input
+        type="number"
+        id="prime"
+        placeholder="Enter a prime number"
+        value="23"
+        required
+      />
+
+      <label for="generator">Generator (g):</label>
+      <input
+        type="number"
+        id="generator"
+        placeholder="Enter a generator"
+        value="5"
+        required
+      />
+
+      <label for="aliceKey">Alice's Private Key (a):</label>
+      <input
+        type="number"
+        id="aliceKey"
+        placeholder="Enter Alice's private key"
+        value="6"
+        required
+      />
+
+      <label for="bobKey">Bob's Private Key (b):</label>
+      <input
+        type="number"
+        id="bobKey"
+        placeholder="Enter Bob's private key"
+        value="15"
+        required
+      />
+
+      <button onclick="diffieHellman()">Generate Keys & Compute Secret</button>
+
+      <div class="output" id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

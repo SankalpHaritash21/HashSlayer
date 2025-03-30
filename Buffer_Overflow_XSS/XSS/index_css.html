@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>XSS Secure Search</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        max-width: 90%;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      #result {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #e9f5ff;
+        border: 1px solid #b3d7ff;
+        border-radius: 8px;
+        color: #333;
+        word-break: break-word;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Search Results</h2>
+      <div id="result">Loading...</div>
+      <div class="footer">🔍 Secure Search Demo - Preventing XSS Attacks</div>
+    </div>
+
+    <script>
+      // ✅ Fetching input from URL query parameter (?msg=...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const search = urlParams.get("msg");
+
+      // ✅ Secure: Display as plain text to prevent XSS
+      document.getElementById("result").textContent =
+        search || "No search term provided.";
+    </script>
+  </body>
+</html>
+
+<!-- http://127.0.0.1:5500/Buffer_Overflow_XSS/XSS/index.html?msg=Hello%20World -->

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>XSS Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 400px;
+        max-width: 90%;
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      #message {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #e9f5ff;
+        border: 1px solid #b3d7ff;
+        border-radius: 8px;
+        color: #333;
+        word-break: break-word;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome to XSS Demo</h2>
+      <div id="message">Loading...</div>
+      <div class="footer">🛡️ Secure Demo - Preventing XSS Attacks</div>
+    </div>
+
+    <script>
+      // Getting data from URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get("msg");
+
+      // ✅ Secure: Display as plain text
+      document.getElementById("message").textContent =
+        message || "No message provided.";
+    </script>
+  </body>
+</html>
