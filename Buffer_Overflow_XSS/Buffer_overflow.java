@@ -1,16 +1,31 @@
 public class BufferOverflowExample {
     public static void main(String[] args) {
-        try {
-            // Allocate a buffer of size 10
-            byte[] buffer = new byte[10];
+        int[] buffer = new int[5];  
 
-            // Attempt to fill buffer beyond its capacity
-            for (int i = 0; i <= 10; i++) {
-                buffer[i] = (byte) i;
-                System.out.println("Writing to buffer[" + i + "]: " + buffer[i]);
+        try {
+            for (int i = 0; i < 10; i++) {
+                buffer[i] = i;  
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println("Buffer overflow detected: " + e.getMessage());
+            System.out.println("Caught an ArrayIndexOutOfBoundsException: " + e.getMessage());
         }
     }
 }
+
+
+// import java.nio.ByteBuffer;
+
+// public class BufferOverflowExample {
+//     public static void main(String[] args) {
+//         ByteBuffer buffer = ByteBuffer.allocate(10); // Allocate only 10 bytes
+
+//         try {
+//             for (int i = 0; i < 15; i++) {  // Write more than capacity
+//                 buffer.put((byte)i);
+//                 System.out.println("Wrote: " + i);
+//             }
+//         } catch (Exception e) {
+//             System.out.println("⚠️ Exception occurred: " + e);
+//         }
+//     }
+// }
