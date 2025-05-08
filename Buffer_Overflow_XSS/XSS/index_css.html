@@ -55,6 +55,7 @@
 
     <script>
       // ✅ Fetching input from URL query parameter (?msg=...)
+      // put this msg=<script>alert('Hacked!')<script>
       const urlParams = new URLSearchParams(window.location.search);
       const search = urlParams.get("msg");
 
